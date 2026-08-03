@@ -4,6 +4,7 @@ const fs = require("fs");
 const app = express();
 const port = 8000;
 
+app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
 app.get('/users',(req,res)=>{
@@ -26,7 +27,24 @@ app.route('/api/users/:id')
     return res.json(user)
 })
 .put((req,res)=>{
-    return res.json({status:"pending"})
+    const id = Number(req.params.id)
+    const user = users.find((user)=>user.id===id)
+    if(!user){
+        return res.status(404).json({message:'user not found'})
+    }
+
+    const body = req.body;
+    Object.assign(user, body);
+
+    fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err)=>{
+        if(err){
+            return res.status(500).json({message:"something went wrong"})
+        }
+        return res.json({
+            status: "success",
+            user
+        });
+    })  
 })
 
 .delete((req,res)=>{
