@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #222;
+
+    padding: 20px;
+}
+
+/* Main Heading */
+h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Generated URL */
+body > p {
+    background: white;
+    color: #4f46e5;
+
+    padding: 12px 18px;
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+
+    max-width: 90%;
+    overflow-wrap: anywhere;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Container */
+body > div {
+    width: min(600px, 100%);
+
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 30px;
+    border-radius: 18px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Input */
+input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+/* Button */
+button {
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    body > div {
+        padding: 22px;
+        border-radius: 14px;
+    }
+
+    input,
+    button {
+        font-size: 0.95rem;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 350px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    body > div {
+        padding: 18px;
+    }
+}
