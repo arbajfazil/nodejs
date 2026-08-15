@@ -16,6 +16,9 @@ app.use(express.urlencoded({extended:false}))
 
 app.use(logReqRes('log.txt'))
 
+app.get('/test',(req,res)=>{
+    return res.end(`<h1>hello</h1>`)
+})
 //routes
 app.use("/api/users",userRouter)
 app.listen(port,()=>console.log("server started"));
