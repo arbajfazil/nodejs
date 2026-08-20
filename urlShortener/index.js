@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser")
 const {connectToMongoDb} = require("./connect")
 const URL = require("./models/url");
 const app = express();
-const {restrictToLoggedinUserOnly,checkAuth} = require("./middleware/auth")
+const {checkForAuthentication,restrictTo} = require("./middleware/auth")
 
 const urlRoutes = require("./routes/url")
 const staticRoute = require("./routes/staticRouter")
@@ -27,12 +27,12 @@ app.get("/test", async (req, res) => {
 });
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
+app.use(checkForAuthentication)
 
 
-
-app.use('/url',restrictToLoggedinUserOnly,urlRoutes)
-app.use('/',checkAuth,staticRoute)
-app.use('/user',checkAuth,userRoute)
+app.use('/url',restrictTo("NORMAL"),urlRoutes)
+app.use('/',staticRoute)
+app.use('/user',userRoute)
 
 app.get('/:shortid',async(req,res)=>{
     const shortId = req.params.shortid;
